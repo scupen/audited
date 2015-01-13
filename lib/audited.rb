@@ -5,7 +5,7 @@ module Audited
   VERSION = '4.0.0'
 
   class << self
-    attr_accessor :ignored_attributes, :current_user_method, :audit_class
+    attr_accessor :ignored_attributes, :current_user_method, :audit_class, :enable_callbacks
 
     def store
       Thread.current[:audited_store] ||= {}
@@ -15,4 +15,6 @@ module Audited
   @ignored_attributes = %w(lock_version created_at updated_at created_on updated_on)
 
   @current_user_method = :current_user
+  
+  @enable_callbacks = true
 end
